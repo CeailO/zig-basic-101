@@ -1,21 +1,28 @@
-const std = @import("std");
+const expect = @import("std").testing.expect;
 
 pub fn main() !void {
-    // 2. ARRAYS
-    // Arrays are denoted by [N]T, where
-    // N = number of elements within the array, []
-    // T = Type of elements
+    // 3. IF
+    // if statement only accepts `bool` value
+    // Use along with `expect` function imported from standard library
+    // This section also introduce unit testing
+    // invoke `zig test {file-name}.zig`
 
-    // Array literals, N can be substituted with _ to infer the size of the array
-    const a = [5]u8{ 'h', 'e', 'l', 'l', 'o' };
-    _ = a;
-    const b = [_]u8{ 'w', 'o', 'r', 'l', 'd' };
-    _ = b;
+}
 
-    // Accessing size of an array - .len
-    // e.g
+test "if statement" {
+    const a = true;
+    var x: u16 = 0;
+    if (a) {
+        x += 1;
+    } else {
+        x += 2;
+    }
+    try expect(x == 1);
+}
 
-    const array = [_]u8{ 'h', 'e', 'l', 'l', 'o' };
-    const length = array.len; // 5
-    _ = length;
+test "if statement expressions" {
+    const a = true;
+    var x: u16 = 0;
+    x += if (a) 1 else 2;
+    try expect(x == 1);
 }
