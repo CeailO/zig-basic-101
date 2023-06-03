@@ -1,29 +1,21 @@
 const std = @import("std");
 
 pub fn main() !void {
-    // 1. ASSIGNMENT SYNTAX
-    // (const | var) identifier[: type] = value;
+    // 2. ARRAYS
+    // Arrays are denoted by [N]T, where
+    // N = number of elements within the array, []
+    // T = Type of elements
 
-    // `const` usage - identifier is a constant and stores an immutable value
-    // `var` usage - identifier is a variable and stores a mutable value
-    // `:type` - type annotation for identifier and may be ommited if fata type can be inferred
-
-    // eg.
-    const constant: i32 = 5;
-    _ = constant;
-    var variable: u32 = 5000;
-    _ = variable;
-
-    // Also cam be inferred explicitly using type coercion (@as)
-    const inferred_constant: i32 = @as(i32, 5);
-    _ = inferred_constant;
-    var inferred_variable: u32 = @as(i32, 5000);
-    _ = inferred_variable;
-
-    // Assignment must store value at compile time. If no known value given, it can be substitute with undefined
-    // which coerces to any type, as long type annotation is provided.
-    const a: i32 = undefined;
+    // Array literals, N can be substituted with _ to infer the size of the array
+    const a = [5]u8{ 'h', 'e', 'l', 'l', 'o' };
     _ = a;
-    var b: u32 = undefined;
+    const b = [_]u8{ 'w', 'o', 'r', 'l', 'd' };
     _ = b;
+
+    // Accessing size of an array - .len
+    // e.g
+
+    const array = [_]u8{ 'h', 'e', 'l', 'l', 'o' };
+    const length = array.len; // 5
+    _ = length;
 }
