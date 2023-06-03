@@ -8,5 +8,6 @@ The content can be navigate through branch options
 | ----- | ----------------------------------------------------------------- | ------------- | ---------- |
 | 1     | [Assignment](https://github.com/CeailO/zig-basic-101/tree/01/src) | June 03, 2023 | Newb       |
 | 2     | [Arrays](https://github.com/CeailO/zig-basic-101/tree/02/src)     | June 03, 2023 |            |
+| 2     | [If](https://github.com/CeailO/zig-basic-101/tree/03/src)         | June 03, 2023 |            |
 
 **_To be updated..._**
