@@ -1,24 +1,29 @@
 const std = @import("std");
 
 pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+    // 1. ASSIGNMENT SYNTAX
+    // (const | var) identifier[: type] = value;
 
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout_file = std.io.getStdOut().writer();
-    var bw = std.io.bufferedWriter(stdout_file);
-    const stdout = bw.writer();
+    // `const` usage - identifier is a constant and stores an immutable value
+    // `var` usage - identifier is a variable and stores a mutable value
+    // `:type` - type annotation for identifier and may be ommited if fata type can be inferred
 
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
+    // eg.
+    const constant: i32 = 5;
+    _ = constant;
+    var variable: u32 = 5000;
+    _ = variable;
 
-    try bw.flush(); // don't forget to flush!
-}
+    // Also cam be inferred explicitly using type coercion (@as)
+    const inferred_constant: i32 = @as(i32, 5);
+    _ = inferred_constant;
+    var inferred_variable: u32 = @as(i32, 5000);
+    _ = inferred_variable;
 
-test "simple test" {
-    var list = std.ArrayList(i32).init(std.testing.allocator);
-    defer list.deinit(); // try commenting this out and see if zig detects the memory leak!
-    try list.append(42);
-    try std.testing.expectEqual(@as(i32, 42), list.pop());
+    // Assignment must store value at compile time. If no known value given, it can be substitute with undefined
+    // which coerces to any type, as long type annotation is provided.
+    const a: i32 = undefined;
+    _ = a;
+    var b: u32 = undefined;
+    _ = b;
 }
